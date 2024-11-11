@@ -1,0 +1,16 @@
+<h1>New Game</h1>
+<div class="mb-4">
+      <!-- Boucle pour afficher les lettres générées dynamiquement -->
+      <ul>
+        <% @letters.each do |letter| %>
+          <li class="p-3 m-1 bg-primary color text-white"><%= letter %></li>
+        <% end %>
+      </ul>
+    </div>
+<p>What is the longest word you can find?</p>
+<form action="/score" method="post" data-turbo="false">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <input type="hidden" name="letters" value= "<%= @letters.join %>" />
+  <input type="text" name="word">
+  <input type="submit" value="play">
+</form>
